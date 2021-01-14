@@ -1,0 +1,21 @@
+ResponseBody.string
+332
+@import url("skel.css");
+@import url("tags.css");
+@import url("forms.css");
+@import url("custom.css");
+@import url("pygments.css");
+@charset "utf-8";
+
+/*
+ * Цвета эмблеммы:
+ *
+ *     Серый: #5f5f5f;
+ *     Былый: #ffffff;
+ *     Красный: #a0242c;
+ *     Зелёный: #008256;
+ *     Чёрный: #000000;
+ *     Доп. серый: #717d82;
+ *
+ */
+

@@ -134,19 +134,19 @@ data class Arg(val type: String, val name: String, val reference: Boolean, val s
 fun InputStream.parseModel() = ModelParser().parse(this)
 
 class GeneratorCommand : CliktCommand() {
-    val language: String by option("-l", "--language", help = "Receiver language").choice(*supportedLanguages()).required()
-    val explicitSelf: Boolean by option("-s").flag()
+//    val language: String by option("-l", "--language", help = "Receiver language").choice(*supportedLanguages()).required()
+//    val explicitSelf: Boolean by option("-s").flag()
     val output: File? by option("-o", "--output", help = "Output file").file()
     val models: List<File> by argument(help = "Models").file(exists = true).multiple(required = true).validate {
         require(it.isNotEmpty()) { "At least one model should be specified" }
     }
 
     override fun run() = generateWrapper(
-            template = "generator/$language.stg",
+            template = "generator/java.stg",
             modelFiles = models,
             outputFile = output,
-            explicitSelfArg = explicitSelf,
-            destinationLanguage = language
+//            explicitSelfArg = explicitSelf,
+            destinationLanguage = "java"
     )
 
     private fun resourceReader(name: String) = this.javaClass.classLoader.getResourceAsStream(name).bufferedReader()
@@ -157,8 +157,8 @@ class GeneratorCommand : CliktCommand() {
 
 fun main(args: Array<String>) = GeneratorCommand().main(args)
 
-private fun generateWrapper(template: String, modelFiles: List<File>, outputFile: File?, explicitSelfArg: Boolean, destinationLanguage: String) {
-    explicitSelf = explicitSelfArg
+private fun generateWrapper(template: String, modelFiles: List<File>, outputFile: File?, destinationLanguage: String) {
+
 //    val group = STGroupFile(template)
 //    val st = group.getInstanceOf("wrapperClass")
 //    st.add("type", "int")
