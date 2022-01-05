@@ -1,0 +1,6 @@
+[submodule "jqf"]
+	path = jqf
+	url = https://github.com/rohanpadhye/jqf
+[submodule "jqf_old"]
+	path = jqf_old
+	url = https://github.com/rohanpadhye/jqf
